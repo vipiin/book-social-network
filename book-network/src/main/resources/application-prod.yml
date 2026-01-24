@@ -41,3 +41,5 @@ application:
 
 server:
   port: ${PORT:8088}
+  servlet:
+    context-path: /api/v1
