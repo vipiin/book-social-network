@@ -43,8 +43,4 @@ public class AuthenticationController {
         service.activateAccount(token);
     }
 
-    @GetMapping("/health")
-    public ResponseEntity<String> health() {
-        return ResponseEntity.ok("pong");
-    }
 }

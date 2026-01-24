@@ -37,9 +37,9 @@ services:
         value: https://frontend-app.koyeb.app
     ports:
       - port: 8088
-        path: /v1/auth/health
+        path: /v1/health
     routes:
-      - path: /api
+      - path: /
         port: 8088
 
   - name: frontend
