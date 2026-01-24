@@ -9,35 +9,35 @@ services:
     build:
       dockerfile: Dockerfile.backend
     env:
-      - name: SPRING_PROFILES_ACTIVE
+      - key: SPRING_PROFILES_ACTIVE
         value: prod
-      - name: JDBC_DATABASE_URL
+      - key: JDBC_DATABASE_URL
         secret: JDBC_DATABASE_URL
-      - name: DB_USERNAME
+      - key: DB_USERNAME
         secret: DB_USERNAME
-      - name: DB_PASSWORD
+      - key: DB_PASSWORD
         secret: DB_PASSWORD
-      - name: SPRING_MAIL_HOST
+      - key: SPRING_MAIL_HOST
         value: smtp-relay.brevo.com
-      - name: SPRING_MAIL_PORT
+      - key: SPRING_MAIL_PORT
         value: "587"
-      - name: SPRING_MAIL_USERNAME
+      - key: SPRING_MAIL_USERNAME
         secret: BREVO_USER
-      - name: SPRING_MAIL_PASSWORD
+      - key: SPRING_MAIL_PASSWORD
         secret: BREVO_PASSWORD
-      - name: JWT_SECRET
+      - key: JWT_SECRET
         secret: JWT_SECRET
-      - name: CLOUDINARY_CLOUD_NAME
+      - key: CLOUDINARY_CLOUD_NAME
         secret: CLOUDINARY_CLOUD_NAME
-      - name: CLOUDINARY_API_KEY
+      - key: CLOUDINARY_API_KEY
         secret: CLOUDINARY_API_KEY
-      - name: CLOUDINARY_API_SECRET
+      - key: CLOUDINARY_API_SECRET
         secret: CLOUDINARY_API_SECRET
-      - name: FRONTEND_URL
+      - key: FRONTEND_URL
         value: https://frontend-app.koyeb.app
     ports:
       - port: 8088
-        path: /api/v1/health
+        path: /api/v1/actuator/health
     routes:
       - path: /api
         port: 8088
