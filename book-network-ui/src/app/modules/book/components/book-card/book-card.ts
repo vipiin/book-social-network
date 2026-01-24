@@ -30,10 +30,13 @@ export class BookCard {
 
   bookCover = computed(() => {
     const book = this._book();
-    if (book.cover) {
-      return 'data:image/jpg;base64, ' + book.cover;
+    if (!book.cover) {
+      return this._bookcover || 'https://picsum.photos/1900/800';
     }
-    return this._bookcover || 'https://picsum.photos/1900/800';
+    if (book.cover.startsWith('http')) {
+      return book.cover;
+    }
+    return 'data:image/jpg;base64, ' + book.cover;
   });
 
   get rating(): number {
