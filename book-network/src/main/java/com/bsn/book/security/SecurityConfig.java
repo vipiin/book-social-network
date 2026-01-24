@@ -16,19 +16,19 @@ import lombok.RequiredArgsConstructor;
 
 @Configuration
 @EnableWebSecurity
-@RequiredArgsConstructor//create constructor with all args final and private 
+@RequiredArgsConstructor // create constructor with all args final and private
 @EnableMethodSecurity(securedEnabled = true)
 public class SecurityConfig {
 
     private final JwtFilter jwtAuthFilter;
     private final AuthenticationProvider authenticationProvider;
+
     @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception{
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .cors(Customizer.withDefaults())
                 .csrf(AbstractHttpConfigurer::disable)
-                .authorizeHttpRequests(req->
-                    req.requestMatchers(
+                .authorizeHttpRequests(req -> req.requestMatchers(
                         "/auth/**",
                         "/v2/api-docs",
                         "/v3/api-docs",
@@ -40,18 +40,14 @@ public class SecurityConfig {
                         "/swagger-ui/**",
                         "/webjars/**",
                         "/swagger-ui.html",
-                                    "/api/v1/v3/api-docs/**",      // actual path because of context-path
-                                    "/api/v1/swagger-ui/**",       // swagger UI static resources
-                                    "/v3/api-docs/**",             // raw path without context-path (spring might map both)
-                                    "/swagger-ui/**"
-                    ).permitAll()
+                        "/v3/api-docs/**",
+                        "/swagger-ui/**").permitAll()
                         .anyRequest()
-                            .authenticated()
-                )
-                .sessionManagement(session->session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+                        .authenticated())
+                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authenticationProvider(authenticationProvider)
-                .addFilterBefore(jwtAuthFilter,UsernamePasswordAuthenticationFilter.class);
-                return http.build();
+                .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
+        return http.build();
 
     }
 
