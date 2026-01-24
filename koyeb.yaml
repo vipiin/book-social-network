@@ -42,15 +42,3 @@ services:
       - path: /
         port: 8088
 
-  - name: frontend
-    git:
-      repository: https://github.com/vipiin/book-social-network
-      branch: main
-    build:
-      dockerfile: Dockerfile.frontend
-    ports:
-      - port: 80
-        path: /
-    routes:
-      - path: /
-        port: 80
