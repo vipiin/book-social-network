@@ -22,6 +22,6 @@ export function provideApiConfiguration(rootUrl: string) {
   providedIn: 'root',
 })
 export class ApiConfiguration {
-  rootUrl: string = 'http://localhost:8088/api/v1';
+  rootUrl: string = 'https://friendly-cephalopod-vipiinorg-8101e118.koyeb.app/v1';
 }
 
