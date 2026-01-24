@@ -19,15 +19,17 @@ import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
 @Configuration
 @RequiredArgsConstructor
+@Slf4j
 public class BeansConfig {
 
     private final UserDetailsService userDetailsService;
 
     @Value("${application.cors.origins:http://localhost:4200}")
-    private java.util.List<String> allowedOrigins;
+    private String allowedOrigins;
 
     @Bean
     public AuthenticationProvider authenticationProvider() {
@@ -54,10 +56,13 @@ public class BeansConfig {
 
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
+        log.info("Configuring CORS with allowed origins: {}", allowedOrigins);
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         CorsConfiguration config = new CorsConfiguration();
         config.setAllowCredentials(true);
-        config.setAllowedOrigins(allowedOrigins);
+        config.setAllowedOriginPatterns(Arrays.asList(
+                allowedOrigins,
+                "https://*.vercel.app"));
         config.setAllowedHeaders(Arrays.asList(
                 HttpHeaders.ORIGIN,
                 HttpHeaders.CONTENT_TYPE,
