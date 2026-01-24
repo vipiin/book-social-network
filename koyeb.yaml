@@ -6,9 +6,8 @@ services:
     git:
       repository: https://github.com/vipiin/book-social-network
       branch: main
-      workdir: book-network
     build:
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.backend
     env:
       SPRING_PROFILES_ACTIVE: prod
       JDBC_DATABASE_URL: koyeb-secret:JDBC_DATABASE_URL
@@ -34,9 +33,8 @@ services:
     git:
       repository: https://github.com/vipiin/book-social-network
       branch: main
-      workdir: book-network-ui
     build:
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.frontend
     ports:
       - port: 80
         path: /
