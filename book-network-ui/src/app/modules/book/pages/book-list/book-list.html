@@ -1,0 +1,47 @@
+<h3>Books list</h3>
+<div *ngIf="message()" class="alert" [class.alert-danger]="level() === 'error'"
+    [class.alert-success]="level() === 'success'">
+    {{message()}}</div>
+<hr>
+<div class="d-flex justify-content-start gap-2 flex-wrap">
+    <app-book-card [_book]="book" *ngFor="let book of bookResponse().content"
+        (borrow)="borrowBook($event)"></app-book-card>
+</div>
+<div class="d-flex justify-content-center mt-3">
+    <nav aria-label="Page navigation example" *ngIf="bookResponse().content && bookResponse().content!.length > 0">
+        <ul class="pagination">
+            <li class="page-item">
+                <a href="javascript:void(0)" aria-label="First" class="page-link" (click)="goToFirstPage()"
+                    [class.disabled]="page == 0">
+                    <i class="fa-solid fa-angles-left"></i>
+                </a>
+            </li>
+            <li class="page-item">
+                <a href="javascript:void(0)" aria-label="Previous" class="page-link" (click)="goToPreviousPage()"
+                    [class.disabled]="page == 0">
+                    <i class="fa-solid fa-angle-left"></i>
+                </a>
+            </li>
+            <li class="page-item" *ngFor="let _ of [].constructor(this.bookResponse().totalPages); let pageIndex=index">
+                <a href="javascript:void(0)" aria-label="Page" class="page-link" (click)="goToPage(pageIndex)"
+                    [class.active]="page == pageIndex">
+                    {{pageIndex+1}}
+                </a>
+            </li>
+            <li class="page-item">
+                <a href="javascript:void(0)" aria-label="Next" class="page-link" (click)="goToNextPage()"
+                    [class.disabled]="isLastPage">
+                    <i class="fa-solid fa-chevron-right"></i>
+                </a>
+            </li>
+            <li class="page-item">
+                <a href="javascript:void(0)" aria-label="Last Page" class="page-link" (click)="goToLastPage()"
+                    [class.disabled]="isLastPage">
+                    <i class="fa-solid fa-angles-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <p *ngIf="bookResponse().content && bookResponse().content!.length === 0" class="text-muted italic">No books
+        available.</p>
+</div>

@@ -1,0 +1,16 @@
+.navbar-nav {
+    .nav-link {
+        &:hover {
+            background-color: #d6e5f1;
+            border-radius: 5px;
+            text-decoration: underline;
+        }
+
+        &.active {
+            color: #0d6efd !important;
+            font-weight: bold !important;
+            background-color: #e7f1ff !important;
+            border-radius: 5px !important;
+        }
+    }
+}
