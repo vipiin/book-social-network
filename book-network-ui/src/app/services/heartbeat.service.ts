@@ -7,7 +7,7 @@ import { ApiConfiguration } from './api-configuration';
     providedIn: 'root'
 })
 export class HeartbeatService {
-    private readonly HEARTBEAT_INTERVAL = 60 * 1000; // 9 minutes
+    private readonly HEARTBEAT_INTERVAL = 15 * 60 * 1000; // 9 minutes
 
     constructor(
         private http: HttpClient,
