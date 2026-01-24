@@ -43,3 +43,8 @@ server:
   port: ${PORT:8088}
   servlet:
     context-path: /v1
+
+logging:
+  level:
+    org.springframework.web: DEBUG
+    org.springframework.security: DEBUG
