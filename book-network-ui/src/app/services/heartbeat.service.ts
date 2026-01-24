@@ -33,7 +33,7 @@ export class HeartbeatService {
     }
 
     private sendPing() {
-        const url = `${this.config.rootUrl}/auth/health`;
+        const url = `${this.config.rootUrl}/health`;
         this.http.get(url, { responseType: 'text' }).subscribe({
             next: () => console.log('Heartbeat ping successful'),
             error: (err) => console.error('Heartbeat ping failed', err)

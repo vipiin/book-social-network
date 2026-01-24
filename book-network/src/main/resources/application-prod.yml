@@ -31,6 +31,8 @@ application:
     jwt:
       expiration: ${JWT_EXPIRATION:8640000}
       secret-key: ${JWT_SECRET}
+  cors:
+    origins: ${FRONTEND_URL:http://localhost:4200}
   mailing:
     frontend:
       activation-url: ${FRONTEND_URL}

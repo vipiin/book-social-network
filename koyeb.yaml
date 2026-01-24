@@ -34,7 +34,7 @@ services:
       - key: CLOUDINARY_API_SECRET
         secret: CLOUDINARY_API_SECRET
       - key: FRONTEND_URL
-        value: https://frontend-app.koyeb.app
+        value: https://book-social-network-two.vercel.app
     ports:
       - port: 8088
         path: /v1/health
