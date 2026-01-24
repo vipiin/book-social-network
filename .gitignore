@@ -1,0 +1,25 @@
+# Environment variables
+.env
+*.env
+
+# Node modules
+node_modules/
+node_modules 2/
+
+# Build outputs
+dist/
+target/
+build/
+.angular/
+
+# IDE
+.idea/
+.vscode/
+*.iml
+.DS_Store
+
+# Uploads (local development)
+uploads/
+
+# Logs
+*.log

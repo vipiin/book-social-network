@@ -1,0 +1,25 @@
+spring:
+    profiles:
+        active: dev
+    servlet:
+        multipart:
+            max-file-size: 50MB
+            max-request-size: 50MB
+application:
+  security:
+    jwt:
+      expiration: 8640000
+      secret-key: 0193e49de0c8e3396e6388360d0eb6016beed2384c6849bb048655cae7e40776
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+  swagger-ui:
+    path: /swagger-ui
+
+server:
+  servlet:
+    context-path: /api/v1/
+        
+
+
+
