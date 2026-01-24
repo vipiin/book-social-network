@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @RestController
-@RequestMapping(value = "/auth")
+@RequestMapping(value = "/v1/auth")
 @RequiredArgsConstructor
 @Tag(name = "Authentication")
 public class AuthenticationController {
