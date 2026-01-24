@@ -9,19 +9,32 @@ services:
     build:
       dockerfile: Dockerfile.backend
     env:
-      SPRING_PROFILES_ACTIVE: prod
-      JDBC_DATABASE_URL: koyeb-secret:JDBC_DATABASE_URL
-      DB_USERNAME: koyeb-secret:DB_USERNAME
-      DB_PASSWORD: koyeb-secret:DB_PASSWORD
-      SPRING_MAIL_HOST: smtp-relay.brevo.com
-      SPRING_MAIL_PORT: 587
-      SPRING_MAIL_USERNAME: koyeb-secret:BREVO_USER
-      SPRING_MAIL_PASSWORD: koyeb-secret:BREVO_PASSWORD
-      JWT_SECRET: koyeb-secret:JWT_SECRET
-      CLOUDINARY_CLOUD_NAME: koyeb-secret:CLOUDINARY_CLOUD_NAME
-      CLOUDINARY_API_KEY: koyeb-secret:CLOUDINARY_API_KEY
-      CLOUDINARY_API_SECRET: koyeb-secret:CLOUDINARY_API_SECRET
-      FRONTEND_URL: https://frontend-app.koyeb.app
+      - name: SPRING_PROFILES_ACTIVE
+        value: prod
+      - name: JDBC_DATABASE_URL
+        secret: JDBC_DATABASE_URL
+      - name: DB_USERNAME
+        secret: DB_USERNAME
+      - name: DB_PASSWORD
+        secret: DB_PASSWORD
+      - name: SPRING_MAIL_HOST
+        value: smtp-relay.brevo.com
+      - name: SPRING_MAIL_PORT
+        value: "587"
+      - name: SPRING_MAIL_USERNAME
+        secret: BREVO_USER
+      - name: SPRING_MAIL_PASSWORD
+        secret: BREVO_PASSWORD
+      - name: JWT_SECRET
+        secret: JWT_SECRET
+      - name: CLOUDINARY_CLOUD_NAME
+        secret: CLOUDINARY_CLOUD_NAME
+      - name: CLOUDINARY_API_KEY
+        secret: CLOUDINARY_API_KEY
+      - name: CLOUDINARY_API_SECRET
+        secret: CLOUDINARY_API_SECRET
+      - name: FRONTEND_URL
+        value: https://frontend-app.koyeb.app
     ports:
       - port: 8088
         path: /api/v1/health
