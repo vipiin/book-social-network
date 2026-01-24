@@ -5,12 +5,13 @@ import { FormsModule } from '@angular/forms';
 import { routes } from './app.routes';
 import { provideClientHydration, withEventReplay } from '@angular/platform-browser';
 import { httpTokenInterceptor } from './services/interceptor/http-token-interceptor';
+import { loaderInterceptor } from './services/interceptor/loader-interceptor';
 import { provideApiConfiguration } from './services/api-configuration';
 import { environment } from '../environments/environment';
 
 export const appConfig: ApplicationConfig = {
   providers: [
-    provideHttpClient(withInterceptors([httpTokenInterceptor]), withFetch()),
+    provideHttpClient(withInterceptors([httpTokenInterceptor, loaderInterceptor]), withFetch()),
     provideBrowserGlobalErrorListeners(),
     provideZonelessChangeDetection(),
     provideRouter(routes), provideClientHydration(withEventReplay()),
