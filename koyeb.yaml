@@ -32,7 +32,7 @@ services:
 
   - name: frontend
     git:
-      repository: github.com/your-username/your-repo
+      repository: https://github.com/vipiin/book-social-network
       branch: main
       workdir: book-network-ui
     build:
