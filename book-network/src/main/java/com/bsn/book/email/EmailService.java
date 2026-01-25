@@ -35,7 +35,7 @@ public class EmailService {
         if (emailTemplate == null) {
             templateName = "confrim-email";
         } else {
-            templateName = emailTemplate.name();
+            templateName = emailTemplate.getName();
         }
         MimeMessage mimeMessage = mailSender.createMimeMessage();
         MimeMessageHelper helper = new MimeMessageHelper(
