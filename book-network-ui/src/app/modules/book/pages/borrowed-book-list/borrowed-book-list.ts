@@ -5,12 +5,11 @@ import { BookService } from '../../../../services/services/book.service';
 import { FeedbackService } from '../../../../services/services/feedback.service';
 import { FormsModule } from "@angular/forms";
 import { Rating } from "../../components/rating/rating";
-import { RouterLink } from "@angular/router";
 
 @Component({
   selector: 'app-borrowed-book-list',
   standalone: true,
-  imports: [CommonModule, FormsModule, Rating, RouterLink],
+  imports: [CommonModule, FormsModule, Rating],
   templateUrl: './borrowed-book-list.html',
   styleUrl: './borrowed-book-list.scss',
 })
