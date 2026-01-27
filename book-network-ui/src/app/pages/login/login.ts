@@ -1,4 +1,4 @@
-import { Component, ChangeDetectorRef } from '@angular/core';
+import { Component, ChangeDetectorRef, OnInit } from '@angular/core';
 import { AuthenticationRequest } from '../../services/models';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
@@ -11,7 +11,7 @@ import { TokenService } from '../../services/token/token';
   templateUrl: './login.html',
   styleUrl: './login.scss',
 })
-export class Login {
+export class Login implements OnInit {
 
 
   authRequest: AuthenticationRequest = {
@@ -25,6 +25,12 @@ export class Login {
     private cdr: ChangeDetectorRef,
     private tokenService: TokenService
   ) { }
+
+  ngOnInit() {
+    if (this.tokenService.isTokenValid()) {
+      this.router.navigate(['books']);
+    }
+  }
   login() {
     this.errorMsg = [];
     this.authService.authenticate(
