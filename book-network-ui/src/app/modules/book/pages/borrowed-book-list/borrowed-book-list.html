@@ -77,10 +77,12 @@
                         <td><i class="fas fa-star text-warning me-1"></i>{{book.rate}}</td>
                         <td>
                             <div class="d-flex gap-2">
-                                <i *ngIf="book.returned" class="fa-regular fa-paper-plane text-primary cursor-pointer"></i>
+                                <i *ngIf="book.returned"
+                                    class="fa-regular fa-paper-plane text-primary cursor-pointer"></i>
                                 <i *ngIf="!book.returned" (click)="returnBorrowedBook(book)"
                                     class="fa-solid fa-paper-plane text-success cursor-pointer"></i>
-                                <i class="fa-solid fa-circle-check cursor-pointer" [class.text-success]="book.returnApproved"></i>
+                                <i class="fa-solid fa-circle-check cursor-pointer"
+                                    [class.text-success]="book.returnApproved"></i>
                             </div>
                         </td>
                     </tr>
@@ -89,7 +91,7 @@
         </div>
         <div class="d-flex justify-content-center mt-3">
             <nav aria-label="Page navigation example"
-                *ngIf="bookResponse().content && bookResponse().content!.length > 0">
+                *ngIf="bookResponse().content && bookResponse().content.length > 0">
                 <ul class="pagination">
                     <li class="page-item">
                         <a href="javascript:void(0)" aria-label="First" class="page-link" (click)="goToFirstPage()"
@@ -124,6 +126,7 @@
                     </li>
                 </ul>
             </nav>
+            <p *ngIf="bookResponse().content && bookResponse().content.length === 0">No books to display</p>
         </div>
     </div>
 </div>
