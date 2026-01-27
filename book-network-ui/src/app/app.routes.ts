@@ -14,13 +14,17 @@ export const routes: Routes = [
         component: Register
     },
     {
-        path:'activate-account',
+        path: 'activate-account',
         component: AcivateAccount
     },
     {
         path: 'books',
-        loadChildren: () => import('./modules/book/book-module').then(m=>m.BookModule),
-        canActivate:[authGuard]
+        loadChildren: () => import('./modules/book/book-module').then(m => m.BookModule),
+        canActivate: [authGuard]
+    },
+    {
+        path: '',
+        redirectTo: 'login',
+        pathMatch: 'full'
     }
-
 ];
