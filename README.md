@@ -101,3 +101,12 @@ this.service.performAction().subscribe({
 - **Centralized Handling**: Single point of error management
 - **Type Safety**: Strongly typed error objects for frontend consumption
 - **Maintainability**: Easy to add new exception types and modify error handling logic
+
+```
+Scenario	                                 Exception	         HTTP Status
+Book archived/not shareable	OperationNotPermittedException	400
+Own book borrow/return	OperationNotPermittedException	400
+Already borrowed	           OperationNotPermittedException	400
+Didn't borrow book	           OperationNotPermittedException	400
+Not book owner (approve/update)	OperationNotPermittedException	400
+```
