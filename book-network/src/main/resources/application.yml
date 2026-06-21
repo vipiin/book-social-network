@@ -111,6 +111,9 @@ application:
 
 server:
   port: ${PORT:8088}
+  tomcat:
+    mbeans:
+      enabled: true
 
 logging:
   level:
